@@ -1,0 +1,41 @@
+// Colors
+$background: #f6f6f6;
+$orange: #df7039;
+$v-light-grey: #f5f5f5;
+$light-grey: #757575;
+$dark-grey: #373737;
+
+// fonts
+$lato: 'Lato', sans-serif;
+$light: 300;
+$regular: 400; 
+$bold: 700; 
+
+//shadows
+$inner-shadow: inset 0px 0px 5px 0px rgba(223, 112, 57, 0.11);
+
+//borders
+$border: 1px solid rgb(224, 224, 224);
+
+body{
+	background-color: $background!important;
+	padding-top: 53px!important;
+}
+
+
+[type='text'], [type='password'], [type='date'], [type='datetime'], [type='datetime-local'], [type='month'], [type='week'], [type='email'], [type='number'], [type='search'], [type='tel'], [type='time'], [type='url'], [type='color'], textarea{
+  border: $border;
+  border-radius: 4px;
+  background-color: rgb(246, 246, 246);
+  // opacity: 0.09;
+  box-shadow: $inner-shadow;
+}
+
+[type='text']:focus, [type='password']:focus, [type='date']:focus, [type='datetime']:focus, [type='datetime-local']:focus, [type='month']:focus, [type='week']:focus, [type='email']:focus, [type='number']:focus, [type='search']:focus, [type='tel']:focus, [type='time']:focus, [type='url']:focus, [type='color']:focus, textarea:focus{
+	border-color: $orange;
+  // color: $orange;
+  box-shadow: inset 0px 0px 5px 0px rgba(223, 112, 57, 0.11);
+  -moz-box-shadow: inset 0px 0px 5px 0px rgba(223, 112, 57, 0.11);
+  -webkit-box-shadow: inset 0px 0px 5px 0px rgba(223, 112, 57, 0.11);
+  -ms-box-shadow: inset 0px 0px 5px 0px rgba(223, 112, 57, 0.11);
+}
