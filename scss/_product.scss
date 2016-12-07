@@ -1,0 +1,41 @@
+.product{
+  width: 200px;
+  display: inline-block;
+  margin: 0 20px;
+  text-align: left;
+}
+
+.product p{
+  font-size: 16px;
+  margin: 10px 0px 8px 0px;
+  font-family: $lato;
+  color: $light-grey;
+  line-height: 16px;
+}
+
+.seperator{
+  width: 200px;
+  height: 2px;
+  background-color: $v-light-grey;
+}
+
+.product h3{
+  font-size: 24px;
+  font-family: $lato;
+  color: $dark-grey;
+  line-height: 24px;
+  max-width: 200px;
+  margin: 8px 0px 0px 0px;
+  display: inline-block;
+}
+
+.product-bottom{
+  width: 200px;
+}
+
+.product button{
+  display: inline-block;
+  float: right;
+  margin-top: 8px;
+  height: 33px;
+}

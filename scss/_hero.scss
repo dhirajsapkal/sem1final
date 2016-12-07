@@ -1,0 +1,23 @@
+.hero{
+	width: 100%;
+	padding: 0 0 20px 0;
+	height: 80vh;
+}
+
+.hero h2{
+  font-size: 16px;
+  color: $dark-grey;
+  font-weight: bold;
+  line-height: 1.751;
+  letter-spacing: 4px;
+}
+
+.hero p{
+  font-size: 16px;
+  color: $light-grey;
+  line-height: 1.438;
+}
+
+.hero-transform{
+  transform: translate3d(330px, -410px, 0);
+}

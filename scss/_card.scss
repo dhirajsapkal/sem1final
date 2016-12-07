@@ -1,0 +1,38 @@
+.card{
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgb(224, 224, 224);
+  border-radius: 4px;
+  background-color: rgb(255, 255, 255);
+  padding: 20px;
+  margin: 10px 0px;
+}
+
+
+.card-center{
+  text-align: center;
+}
+
+.card-title{
+  font-size: 16px;
+  // font-family: $lato;
+  color: $orange;
+  font-weight: $bold;
+  line-height: 16px;
+  text-align: left;
+  display: inline-block;
+}
+
+.card-view{
+  float: right;
+  font-size: 16px;
+  color: $orange;
+  line-height: 16px;
+  text-align: left;
+  font-weight: $light;
+}
+
+.top-strip{
+  width: 100%;
+  display: block
+}

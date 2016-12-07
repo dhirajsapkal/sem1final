@@ -1,30 +1,20 @@
 <!doctype html>
 <html class="no-js" lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Foundation for Sites</title>
-    <link rel="stylesheet" href="css/app.css">
+    <?php
+      include 'head-scaffold.php'
+    ?>
   </head>
   <body>
 
-
     
-    <div class="navbar">
-      <div class="row">
-        <div class="small-2 medium-3 large-2 columns">
-          <button class="my-button menu-button"><img src="img/menu.png" class="menu-icon"><span class="show-for-medium">Menu</span></button>
-        </div>
-        <div class="small-8 medium-6 large-8 columns">
-          <input class="input-box search-box" type="text" name="search">
-        </div>
-        <div class="small-2 medium-3 large-2 columns">
-          <button class="my-button account-button"><span class="show-for-medium">My account</span></button>
-        </div>
-      </div>
-    </div>
+    <?php
+      include 'navbar.php';
+    ?>
 
+    <?php
+      include 'dbcon.php';
+    ?>
     
     <div class="row">
       <div class="hero">
@@ -45,110 +35,33 @@
       
     <div class="row">
       <div class="small-12 columns">
-        <!-- <div class="owl-carousel owl-theme">
-          <div> Your Content </div>
-          <div> Your Content </div>
-          <div> Your Content </div>
-          <div> Your Content </div>
-          <div> Your Content </div>
-          <div> Your Content </div>
-          <div> Your Content </div>
-          <div> Your Content </div>
-        </div> -->
         <div class="card">
           <div class="top-strip">
             <a href="#"><h2 class="card-title">Electronics</h2></a>
             <a href="#" class="card-view">View all</a>
           </div>
           <div class="product-slider">
-            <div class="product">
-              <div class="slider-image">
-                <img src="img/mac.jpg">
-              </div>
-              <p>Title</p>
-              <div class="seperator"></div>
-              <div class="product-bottom">
-                <h3>Price</h3>
-                <button class="my-button">View</button>
-              </div>
-            </div>
-            <div class="product">
-              <div class="slider-image">
-                <img src="img/mac.jpg">
-              </div>
-              <p>Title</p>
-              <div class="seperator"></div>
-              <div class="product-bottom">
-                <h3>Price</h3>
-                <button class="my-button">View</button>
-              </div>
-            </div>
-            <div class="product">
-              <div class="slider-image">
-                <img src="img/mac.jpg">
-              </div>
-              <p>Title</p>
-              <div class="seperator"></div>
-              <div class="product-bottom">
-                <h3>Price</h3>
-                <button class="my-button">View</button>
-              </div>
-            </div>
-            <div class="product">
-              <div class="slider-image">
-                <img src="img/mac.jpg">
-              </div>
-              <p>Title</p>
-              <div class="seperator"></div>
-              <div class="product-bottom">
-                <h3>Price</h3>
-                <button class="my-button">View</button>
-              </div>
-            </div>
-            <div class="product">
-              <div class="slider-image">
-                <img src="img/mac.jpg">
-              </div>
-              <p>Title</p>
-              <div class="seperator"></div>
-              <div class="product-bottom">
-                <h3>Price</h3>
-                <button class="my-button">View</button>
-              </div>
-            </div>
-            <div class="product">
-              <div class="slider-image">
-                <img src="img/mac.jpg">
-              </div>
-              <p>Title</p>
-              <div class="seperator"></div>
-              <div class="product-bottom">
-                <h3>Price</h3>
-                <button class="my-button">View</button>
-              </div>
-            </div>
-            <div class="product">
-              <div class="slider-image">
-                <img src="img/mac.jpg">
-              </div>
-              <p>Title</p>
-              <div class="seperator"></div>
-              <div class="product-bottom">
-                <h3>Price</h3>
-                <button class="my-button">View</button>
-              </div>
-            </div>
-            <div class="product">
-              <div class="slider-image">
-                <img src="img/mac.jpg">
-              </div>
-              <p>Title</p>
-              <div class="seperator"></div>
-              <div class="product-bottom">
-                <h3>Price</h3>
-                <button class="my-button">View</button>
-              </div>
-            </div>
+            <?php
+              include 'product.php';
+            ?>
+            <?php
+              include 'product.php';
+            ?>
+            <?php
+              include 'product.php';
+            ?>
+            <?php
+              include 'product.php';
+            ?>
+            <?php
+              include 'product.php';
+            ?>
+            <?php
+              include 'product.php';
+            ?>
+            <?php
+              include 'product.php';
+            ?>
           </div>
           <div class="slider-buttons">
             <button type="button" class="my-button slider-previous"><img src="img/previous.png"></button>
@@ -158,22 +71,20 @@
       </div>
     </div>
 
-    <div class="footer">
-      <div class="row">
-        <div class="small-12 columns">
-          <p>Check out Admin mode!</p>
-        </div>
-      </div>
-    </div>
+
+    <?php
+      include 'footer.php';
+    ?>
 
 
 
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/what-input/what-input.js"></script>
-    <script src="bower_components/foundation-sites/dist/foundation.js"></script>
+    <?php
+      include 'script-scaffold.php'
+    ?>
+
     <script src="js/slick.min.js"></script>
-    <script src="js/app.js"></script>
-
     <div id="destroy"></div>
+
+
   </body>
 </html>
