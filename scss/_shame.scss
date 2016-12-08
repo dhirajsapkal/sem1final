@@ -5,3 +5,25 @@
 .link-active{
   color: $orange!important;
 }
+
+.added-product-images{
+	// height: 400px;
+	text-align: center;
+	width: 100%;
+	// background-color: $background-grey;
+}
+
+.big-square-button{
+	width: 200px;
+	height: 200px;
+	display: inline-block;
+}
+
+.reveal {
+	background-color: $background;
+}
+
+.added-product-images img, .added-product-images button{
+	margin: 10px;
+}
+
