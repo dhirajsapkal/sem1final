@@ -2,14 +2,12 @@
 
 <?php
 	include 'dbcon.php';
-	$productId = $_POST["productId"];
-	$url = mysql_real_escape_string ($_POST["url"]);
-
+	$category = mysql_real_escape_string ($_POST["category"]);
 
 	// echo $name . " " . $description . "" . $price;
 
-	$sql  = "INSERT INTO images (productId, link)
-	VALUES ('$productId', '$link')";
+	$sql  = "INSERT INTO categories (category)
+	VALUES ('$category')";
 
 	if ($conn->query($sql) === TRUE) {
 		echo 'success';

@@ -13,7 +13,7 @@
   ?>
 
   <div class="reveal" id="category-modal" data-reveal>
-	  <form action="" method="post">
+	  <form id="category" action="" method="post">
       <input type="text" name="category">
       <input type="submit" class="my-button action-button modal-submit" value="Add">
     </form>
@@ -209,6 +209,45 @@
 
 
   $(document).ready(function() {
+
+    $('#category').submit(function(event) {
+
+      // get the form data
+      // there are many ways to get this data using jQuery (you can use the class or id also)
+      var categoryData = {
+          'category'              : $('input[name=category]').val()
+      };
+
+      // process the form
+      $.ajax({
+        type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+        url         : 'add-category.php', // the url where we want to POST
+        data        : categoryData, // our data object
+        // dataType    : 'json', // what type of data do we expect back from the server
+        // encode          : true,
+        success: function() {
+          $('#category').html("<div id='category-success'></div>");
+          $('#category-success').html("<h2>category successfully added!</h2>")
+          .append("<p>That's some AJAX for you</p>")
+          .hide()
+          .fadeIn(1500, function() {
+            $('#category-success').append("<img id='checkmark' src='images/check.png' />");
+          });
+        }
+      })
+      // return false;
+          // using the done promise callback
+          .done(function(data) {
+
+              // log data to the console so we can see
+              console.log(data); 
+
+              // here we will handle errors and validation messages
+          });
+
+      // stop the form from submitting the normal way and refreshing the page
+      event.preventDefault();
+    });
 
      // process the form
     $('#product').submit(function(event) {
