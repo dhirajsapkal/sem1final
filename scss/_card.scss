@@ -34,5 +34,11 @@
 
 .top-strip{
   width: 100%;
-  display: block
+  display: inline-block;
+  // text-align: left;
+}
+
+
+.float-right{
+  float: right;
 }

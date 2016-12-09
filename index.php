@@ -35,39 +35,37 @@
       
     <div class="row">
       <div class="small-12 columns">
-        <div class="card">
-          <div class="top-strip">
-            <a href="#"><h2 class="card-title">Electronics</h2></a>
-            <a href="#" class="card-view">View all</a>
-          </div>
-          <div class="product-slider">
-            <?php
-              include 'product.php';
-            ?>
-            <?php
-              include 'product.php';
-            ?>
-            <?php
-              include 'product.php';
-            ?>
-            <?php
-              include 'product.php';
-            ?>
-            <?php
-              include 'product.php';
-            ?>
-            <?php
-              include 'product.php';
-            ?>
-            <?php
-              include 'product.php';
-            ?>
-          </div>
-          <div class="slider-buttons">
-            <button type="button" class="my-button slider-previous"><img src="img/previous.png"></button>
-            <button type="button" class="my-button slider-next"><img src="img/next.png"></button>
-          </div>
-        </div>
+
+
+        <?php
+          $sql = "SELECT * FROM categories";
+            $result = $conn->query($sql);
+
+            if ($result->num_rows > 0) {
+              while($row = $result->fetch_assoc()) {
+
+                $categoryId = $row['id'];
+                echo '<div class="card">
+                        <div class="top-strip">
+                          <a href="#"><h2 class="card-title">'. $row["category"] .'</h2></a>
+                          <a href="#" class="card-view">View all</a>
+                        </div>
+                        <div class="product-slider">
+                          ';
+                            include 'product.php';
+                echo     '
+                        </div>
+                        <div class="slider-buttons">
+                          <button type="button" class="my-button slider-previous"><img src="img/previous.png"></button>
+                          <button type="button" class="my-button slider-next"><img src="img/next.png"></button>
+                        </div>
+                      </div>';
+              }
+            }
+
+        ?>
+
+
       </div>
     </div>
 

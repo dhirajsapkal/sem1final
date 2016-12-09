@@ -68,6 +68,15 @@
         <button class="my-button" data-open="category-modal" style="width: 100%; margin-bottom: 20px">Add Category</button>
         <button class="my-button" data-open="product-modal" style="width: 100%; margin-bottom: 20px">Add Product</button>
         <button class="my-button" data-open="image-modal" style="width: 100%; margin-bottom: 20px">Add Images</button>
+        <div class="seperator" style="width: 100%"></div>
+        <form action="" method="post">
+          <select name="price_sort" id="price_sort">
+            <option value="0">Low to high</option>
+            <option value="1">High to low</option>
+          </select>
+          <button class="button my-button" type="submit">Go</button>
+        </form>
+        <div class="seperator" style="width: 100%"></div>
     		<nav class="categories" data-magellan data-options="barOffset:30;" data-active-class="link-active">
 	    		<ul class="vertical menu" id="category-display" data-magellan>
             <?php
@@ -108,7 +117,6 @@
                 echo '<div class="card card-center" id="first">
                         <div class="top-strip">
                           <a href="#"><h2 class="card-title">'.$row["category"].'</h2></a>
-                          <!-- <a href="#" class="card-view">View all</a> -->
                         </div>';
 
                          include "product.php";
@@ -193,6 +201,14 @@
 
 
   $(document).ready(function() {
+
+    // $('#price_sort').change(function(event) {
+    //     $.post('price_toggle.php', { selected: $('#price_sort').val() },
+    //         function(data) {
+    //             $('#priceList').html(data);
+    //         }
+    //     );            
+    // });
 
     $('#category').submit(function(event) {
 

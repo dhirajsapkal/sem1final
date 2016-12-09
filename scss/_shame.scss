@@ -35,3 +35,16 @@
 	margin-left: 82px;
 }
 
+#price_sort{
+    width: auto;
+    height: 33px;
+    font-size: 12px;
+    line-height: 23px;
+    padding: 0 40px;
+    margin-top: 20px;
+}
+
+.button:hover, .button:focus{
+	background-color: $background;
+}
+

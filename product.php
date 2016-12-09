@@ -26,11 +26,27 @@
 
 
 
+$sort= $_POST["price_sort"];
+// echo $sort;
 
+if ($sort==0){
 
-
-
+	$sqlProduct = "SELECT * FROM product WHERE product.categoryId = $categoryId ORDER BY product.price";
+}
+else if ($sort==1) {
+	$sqlProduct = "SELECT * FROM product WHERE product.categoryId = $categoryId ORDER BY product.price DESC ";
+}
+else {
 	$sqlProduct = "SELECT * FROM product WHERE product.categoryId = $categoryId";
+}
+
+	// if ($sort_param == 0){
+ //  	$sqlProduct = "SELECT * FROM product WHERE product.categoryId = $categoryId ORDER BY product.price ASC";
+ //  }
+ //  else {
+ //  	$sqlProduct = "SELECT * FROM product WHERE product.categoryId = $categoryId ORDER BY product.price DESC";
+
+ //  }
 
 	$resultProduct = $conn->query($sqlProduct);
 
@@ -44,13 +60,37 @@
 
 	  	$productId = $row['id'];
   		// $imageSQL = "SELECT * FROM images WHERE images.productId = $productId";
-	  	echo $row['name'] . " | " . $row['description'] . " | " . $row['price'] .
-      " | " . $row['categoryId'] . " | " . "<br>";
+
+
+
+
+	  	// echo "<div id='priceList'>" . $row['name'] . " | " . $row['description'] . " | " . $row['price'] .
+    //   " | " . $row['categoryId'] . " | " . "<br>" . "</div>";
+
+
+
+
+
   		// $image_result = $conn->query($imageSQL);
   		// if($image_result->num_rows > 0){
   		// 	while($row_img = $image_result->fetch_assoc()){
 		  //   }
 		  // }
+
+
+	  	echo '<div class="product">
+								  <div class="slider-image">
+								    <img src="img/mac.jpg">
+								  </div>
+								  <p>' . $row['name'] .'</p>
+								  <div class="seperator"></div>
+								  <div class="product-bottom">
+								    <h3>'. $row['price'] .'</h3>
+								    <a href="product-view.php?product_id='.$row['id'].'"><button class="my-button">View</button></a>
+								  </div>
+								</div>';
+
+
 	  }
 	}
 
