@@ -25,8 +25,8 @@
       $sql  = "INSERT INTO product (name, description, price)
       VALUES ('$name', '$description', '$price')";
 
-      if ($conn->query($sql) === TRUE) {
-        echo 'success';
+      if ($conn->query($sql) === TRUE) { 
+       echo 'success';
       } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
       }
