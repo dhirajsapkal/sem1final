@@ -45,6 +45,18 @@
       <input type="text" name="name" id="name" placeholder="Product name">
       <textarea rows="10" id="description" placeholder="About the product" name="description"></textarea>
       <input type="text" id="price" name="price" placeholder="Price">
+      <select name="categoryId">
+      <?php 
+        $sql = "SELECT id, category FROM categories";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+          while($row = $result->fetch_assoc()) {
+            echo "<option value='" . $row["id"] . "'>" . $row["category"] . "</option>";
+          }
+        }
+      ?>
+      </select>
       <button type="submit" class="my-button action-button modal-submit" id="product-submit">Add</button>
     </form>
     <button class="my-button modal-cancel" data-close aria-label="Close modal">Cancel</button>
@@ -57,89 +69,61 @@
         <button class="my-button" data-open="product-modal" style="width: 100%; margin-bottom: 20px">Add Product</button>
         <button class="my-button" data-open="image-modal" style="width: 100%; margin-bottom: 20px">Add Images</button>
     		<nav class="categories" data-magellan data-options="barOffset:30;" data-active-class="link-active">
-	    		<ul class="vertical menu" data-magellan>
-			      <li><a href="#first" data-magellan-target="first">First Arrival</a></li>
-			      <li><a href="#second" data-magellan-target="second">Second Arrival</a></li>
-			      <li><a href="#third" data-magellan-target="third">Third Arrival</a></li>
+	    		<ul class="vertical menu" id="category-display" data-magellan>
+            <?php
+              $sql = "SELECT category FROM categories";
+              $result = $conn->query($sql);
+
+              if ($result->num_rows > 0) {
+                while($row = $result->fetch_assoc()) {
+                  echo '<li><a href="#first" data-magellan-target="' . $row["category"] . '">' . $row["category"] . "</a></li>";
+                }
+              }
+            ?>
 			    </ul>
 		    </nav>
     	</div>
     </div>
     <div class="small-12 medium-10 columns">
     	<div id="product-list">
-		    <div class="card card-center" id="first">
+
+
+<!-- 		    <div class="card card-center" id="first">
 		    	<div class="top-strip">
             <a href="#"><h2 class="card-title">Electronics</h2></a>
-            <!-- <a href="#" class="card-view">View all</a> -->
           </div>
 		    	<?php
-              include 'product.php';
+              // include 'product.php';
           ?>
-          <?php
-              include 'product.php';
-          ?>
-          <?php
-              include 'product.php';
-          ?>
-          <?php
-              include 'product.php';
-          ?>
-          <?php
-              include 'product.php';
-          ?>
-          <?php
-              include 'product.php';
-          ?>
-		    </div>
-		    <div class="card card-center" id="second">
-		    	<div class="top-strip">
-            <a href="#"><h2 class="card-title">Electronics</h2></a>
-            <!-- <a href="#" class="card-view">View all</a> -->
-          </div>
-		    	<?php
-              include 'product.php';
-          ?>
-          <?php
-              include 'product.php';
-          ?>
-          <?php
-              include 'product.php';
-          ?>
-          <?php
-              include 'product.php';
-          ?>
-          <?php
-              include 'product.php';
-          ?>
-          <?php
-              include 'product.php';
-          ?>
-		    </div>
-		    <div class="card card-center" id="third">
-		    	<div class="top-strip">
-            <a href="#"><h2 class="card-title">Electronics</h2></a>
-            <!-- <a href="#" class="card-view">View all</a> -->
-          </div>
-		    	<?php
-              include 'product.php';
-          ?>
-          <?php
-              include 'product.php';
-          ?>
-          <?php
-              include 'product.php';
-          ?>
-          <?php
-              include 'product.php';
-          ?>
-          <?php
-              include 'product.php';
-          ?>
-          <?php
-              include 'product.php';
-          ?>
-		    </div>
-	    </div>
+		    </div>  -->
+	    
+        <?php
+          $sql = "SELECT * FROM categories";
+            $result = $conn->query($sql);
+
+            if ($result->num_rows > 0) {
+              while($row = $result->fetch_assoc()) {
+
+                $categoryId = $row['id'];
+                echo '<div class="card card-center" id="first">
+                        <div class="top-strip">
+                          <a href="#"><h2 class="card-title">'.$row["category"].'</h2></a>
+                          <!-- <a href="#" class="card-view">View all</a> -->
+                        </div>';
+
+                         include "product.php";
+
+
+
+
+                  echo '</div>';
+              }
+            }
+
+        ?>
+
+
+      </div>
     </div>
   </div>
 
@@ -233,6 +217,7 @@
           .fadeIn(1500, function() {
             $('#category-success').append("<img id='checkmark' src='images/check.png' />");
           });
+          // $( "#category-display" ).load( "ajax/test.html" )
         }
       })
       // return false;
@@ -257,7 +242,8 @@
       var formData = {
           'name'              : $('input[name=name]').val(),
           'description'             : $('#description').val(),
-          'price'    : $('input[name=price]').val()
+          'price'    : $('input[name=price]').val(),
+          'categoryId' : $('select[name=categoryId]').val()
       };
 
       // process the form
