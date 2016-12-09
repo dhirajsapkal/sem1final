@@ -9,6 +9,7 @@
 
   <?php
   	include 'navbar.php';
+    include 'dbcon.php';
   ?>
 
   <div class="reveal" id="category-modal" data-reveal>
@@ -20,11 +21,20 @@
 	</div>
 
   <div class="reveal" id="image-modal" data-reveal>
-    <form action="" method="post">
-      <select>
-        
+    <form id="image" action="" method="post">
+      <select name="productId">
+        <?php
+          $sql = "SELECT id, name FROM product";
+          $result = $conn->query($sql);
+
+          if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+              echo "<option value='" . $row["id"] . "'>" . $row["name"] . "</option>";
+            }
+          }
+        ?>
       </select>
-      <input type="text" name="url">
+      <input type="text" name="link">
       <input type="submit" class="my-button action-button modal-submit" value="Add">
     </form>
     <button class="my-button modal-cancel" data-close aria-label="Close modal">Cancel</button>
@@ -200,50 +210,8 @@
 
   $(document).ready(function() {
 
-    // process the form
-    // $('form').submit(function(event) {
-
-    //   // get the form data
-    //   // there are many ways to get this data using jQuery (you can use the class or id also)
-    //   var formData = {
-    //       'name'              : $('input[name=name]').val(),
-    //       'description'             : $('#description').val(),
-    //       'price'    : $('input[name=price]').val()
-    //   };
-
-    //   // process the form
-    //   $.ajax({
-    //       type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
-    //       url         : 'add.php', // the url where we want to POST
-    //       data        : formData, // our data object
-    //       dataType    : 'json', // what type of data do we expect back from the server
-    //                   encode          : true
-
-          // success: function() {
-          //   $('#product').html("<div id='message'></div>");
-          //   $('#message').html("<h2>Product successfully added!!</h2>")
-          //   .hide()
-          //   .fadeIn(1500, function() {
-          //     $('#message').append("<img id='checkmark' src='images/mac.jpeg' />");
-          //   });
-          //   .append("<p>Now go on and add some images.</p>")
-          // }
-    //   })
-    //   // using the done promise callback
-    //   .done(function(data) {
-
-    //       // log data to the console so we can see
-    //       console.log(data);
-
-    //       // here we will handle errors and validation messages
-    //   });
-
-    //   // stop the form from submitting the normal way and refreshing the page
-    //   event.preventDefault();
-    // });
-
      // process the form
-    $('form').submit(function(event) {
+    $('#product').submit(function(event) {
 
       // get the form data
       // there are many ways to get this data using jQuery (you can use the class or id also)
@@ -282,30 +250,49 @@
 
       // stop the form from submitting the normal way and refreshing the page
       event.preventDefault();
-  });
+    });
+
+    $('#image').submit(function(event) {
+
+      // get the form data
+      // there are many ways to get this data using jQuery (you can use the class or id also)
+      var imageData = {
+          'productId'              : $('select[name=productId]').val(),
+          'link'             : $('input[name=link]').val()
+      };
+
+      // process the form
+      $.ajax({
+        type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+        url         : 'add-image.php', // the url where we want to POST
+        data        : imageData, // our data object
+        // dataType    : 'json', // what type of data do we expect back from the server
+        // encode          : true,
+        success: function() {
+          $('#image').html("<div id='Image-success'></div>");
+          $('#Image-success').html("<h2>Image successfully added!</h2>")
+          .append("<p>That's some AJAX for you</p>")
+          .hide()
+          .fadeIn(1500, function() {
+            $('#image-success').append("<img id='checkmark' src='images/check.png' />");
+          });
+        }
+      })
+      // return false;
+          // using the done promise callback
+          .done(function(data) {
+
+              // log data to the console so we can see
+              console.log(data); 
+
+              // here we will handle errors and validation messages
+          });
+
+      // stop the form from submitting the normal way and refreshing the page
+      event.preventDefault();
+    });
 
   });
-
-
-
-    /* attach a submit handler to the form */
-    // $("#formoid").submit(function(event) {
-
-      /* stop form from submitting normally */
-      // event.preventDefault();
-
-      /* get the action attribute from the <form action=""> element */
-      // var $form = $( this ),
-          // url = $form.attr( 'action' );
-
-      /* Send the data using post with element id name and name2*/
-      // var posting = $.post( url, { name: $('#name').val(), description: $('#description').val(), price: $('#price').val() } );
-
-      /* Alerts the results */
-      // posting.done(function( data ) {
-        // alert('success');
-      // });
-    // });
   </script>
 
 
