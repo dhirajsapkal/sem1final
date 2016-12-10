@@ -11,6 +11,9 @@
   font-family: $lato;
   color: $light-grey;
   line-height: 16px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .seperator{
@@ -24,7 +27,7 @@
   font-family: $lato;
   color: $dark-grey;
   line-height: 24px;
-  max-width: 200px;
+  // max-width: 200px;
   margin: 8px 0px 0px 0px;
   display: inline-block;
 }

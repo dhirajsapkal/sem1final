@@ -55,10 +55,6 @@
                             include 'productIndex.php';
                 echo     '
                         </div>
-                        <div class="slider-buttons">
-                          <button type="button" class="my-button slider-previous"><img src="img/previous.png"></button>
-                          <button type="button" class="my-button slider-next"><img src="img/next.png"></button>
-                        </div>
                       </div>';
               }
             }
