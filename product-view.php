@@ -57,7 +57,8 @@
           ?>
           
           
-          <button class="my-button action-button">Buy now</button>
+          <button class="my-button action-button">Edit images</button>
+          <button class="my-button action-button">Edit content</button>
         </div>
       </div>
     </div>

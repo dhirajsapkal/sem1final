@@ -20,6 +20,11 @@
     <a href="#"><button class="my-button modal-cancel" data-close aria-label="Close modal">Cancel</button></a>
 	</div>
 
+  <div class="reveal" id="success-modal" data-reveal>
+    <h1>Success!!!
+    <a href="#"><button class="my-button modal-cancel" data-close aria-label="Close modal">Done</button></a>
+  </div>
+
   <div class="reveal" id="image-modal" data-reveal>
     <form id="image" action="" method="post">
       <select name="productId">
@@ -222,6 +227,9 @@
     //         }
     //     );            
     // });
+    $("#product-modal").on('hide', function () {
+        window.location.reload();
+    });
 
     $('#category').submit(function(event) {
 
