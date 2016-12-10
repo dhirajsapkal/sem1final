@@ -60,10 +60,12 @@
                 ?>
                 
                 
-                <button class="my-button action-button">Buy now</button>
-              </div>
+                <button class="my-button action-button">Edit images</button>
+                <button class="my-button action-button">Edit content</button>
+              <!-- </div> -->
             </div>
           </div>
+        
         </div>
       </div>
     </div>
