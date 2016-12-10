@@ -52,7 +52,7 @@
                         </div>
                         <div class="product-slider">
                           ';
-                            include 'product.php';
+                            include 'productIndex.php';
                 echo     '
                         </div>
                         <div class="slider-buttons">
@@ -82,6 +82,17 @@
     ?>
 
     <script src="js/slick.min.js"></script>
+    <script>
+      $('.slider-image').slick({
+        // arrows: true,
+        mobileFirst: true,
+        slidesToShow: 1,
+        focusOnSelect: false,
+        dots: false,
+        prevArrow: true,
+        nextArrow: true,
+      });
+    </script>
     <script>
       $('.product-slider').slick({
         // arrows: true,

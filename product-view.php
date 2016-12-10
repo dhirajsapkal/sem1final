@@ -20,24 +20,38 @@
     <div class="product-view-container">
       <div class="row">
         <div class="small-12 medium-6 columns">
-        <?php 
-            $product_id = $_GET['product_id'];
-          echo '<div class="product-display">
-                  <img src="img/macbook.jpg">
-                </div>
-                <div class="product-nav">
-                  <img src="img/mac.jpg">
-                </div>
-              </div>
-              <div class="small-12 medium-6 columns">';
+          <div class="product-display">
+        <?php
+          $product_id = $_GET['product_id'];
+          $sql = "SELECT *FROM product WHERE product.id = $product_id ";
+          $result = $conn->query($sql); 
+          if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) { 
+              // $product_id = $row['id'];
+              $imageSQL = "SELECT * FROM images WHERE images.productId = $product_id";
+              $image_result = $conn->query($imageSQL);
+              if($image_result->num_rows > 0){
+                while($row_img = $image_result->fetch_assoc()){
+                  echo '<img src="'.$row_img['link'].'">';
+                }
+              }
+              echo '</div>
+                        <div class="product-nav">';
+              $imageSQL = "SELECT * FROM images WHERE images.productId = $product_id";
+              $image_result = $conn->query($imageSQL);
+              if($image_result->num_rows > 0){
+                while($row_img = $image_result->fetch_assoc()){
+                  echo '<img src="'.$row_img['link'].'">';
+                }
+              }
+              echo          '</div>
+                      </div>
+                      <div class="small-12 medium-6 columns">';
 
-            $sql = "SELECT *FROM product WHERE product.id = $product_id ";
-            $result = $conn->query($sql); 
-            if ($result->num_rows > 0) {
-              while($row = $result->fetch_assoc()) {
-                echo '<h1>'.$row['name'].'</h1>'.
-                      '<p>'.$row['description'].'</p>'.
-                      '<h2>'.$row['price'].'</h2>';
+            
+            echo  '<h1>'.$row['name'].'</h1>'.
+                  '<p>'.$row['description'].'</p>'.
+                  '<h2>$ '.$row['price'].'</h2>';
               }
             }
           ?>

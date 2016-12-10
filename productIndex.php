@@ -24,22 +24,10 @@
 
 
 
-if (isset($_POST['price_sort'])){ 
 
-	$sort= $_POST['price_sort'];
-	// echo $sort;
 
-	if ($sort==0){
-
-		$sqlProduct = "SELECT * FROM product WHERE product.categoryId = $categoryId ORDER BY product.price";
-	}
-	else if ($sort==1) {
-		$sqlProduct = "SELECT * FROM product WHERE product.categoryId = $categoryId ORDER BY product.price DESC ";
-	}
-}
-else {
 	$sqlProduct = "SELECT * FROM product WHERE product.categoryId = $categoryId";
-}
+
 
 	// if ($sort_param == 0){
  //  	$sqlProduct = "SELECT * FROM product WHERE product.categoryId = $categoryId ORDER BY product.price ASC";

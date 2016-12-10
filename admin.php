@@ -17,7 +17,7 @@
       <input type="text" name="category">
       <input type="submit" class="my-button action-button modal-submit" value="Add">
     </form>
-    <button class="my-button modal-cancel" data-close aria-label="Close modal">Cancel</button>
+    <a href="#"><button class="my-button modal-cancel" data-close aria-label="Close modal">Cancel</button></a>
 	</div>
 
   <div class="reveal" id="image-modal" data-reveal>
@@ -37,7 +37,7 @@
       <input type="text" name="link">
       <input type="submit" class="my-button action-button modal-submit" value="Add">
     </form>
-    <button class="my-button modal-cancel" data-close aria-label="Close modal">Cancel</button>
+    <a href="#"><button class="my-button modal-cancel" data-close aria-label="Close modal">Cancel</button></a>
   </div>
 
   <div class="reveal" id="product-modal" data-reveal>
@@ -59,7 +59,7 @@
       </select>
       <button type="submit" class="my-button action-button modal-submit" id="product-submit">Add</button>
     </form>
-    <button class="my-button modal-cancel" data-close aria-label="Close modal">Cancel</button>
+    <a href="#"><button class="my-button modal-cancel" data-close aria-label="Close modal">Cancel</button></a>
   </div>
 
   <div class="row">
@@ -71,10 +71,10 @@
         <div class="seperator" style="width: 100%"></div>
         <form action="" method="post">
           <select name="price_sort" id="price_sort">
-            <option value="0">Low to high</option>
+            <option value="0" selected="selected">Low to high</option>
             <option value="1">High to low</option>
           </select>
-          <button class="button my-button" type="submit">Go</button>
+          <button class="button my-button action-button" type="submit"><span>Go</span></button>
         </form>
         <div class="seperator" style="width: 100%"></div>
     		<nav class="categories" data-magellan data-options="barOffset:30;" data-active-class="link-active">
@@ -119,6 +119,8 @@
                           <a href="#"><h2 class="card-title">'.$row["category"].'</h2></a>
                         </div>';
 
+
+
                          include "product.php";
 
 
@@ -147,6 +149,17 @@
   ?>
 
   <script src="js/slick.min.js"></script>
+  <script>
+    $('.slider-image').slick({
+      // arrows: true,
+      mobileFirst: true,
+      slidesToShow: 1,
+      focusOnSelect: false,
+      dots: false,
+      prevArrow: true,
+      nextArrow: true,
+    });
+  </script>
   <div id="destroy"></div>
 
   <script>
@@ -335,6 +348,7 @@
 
   });
   </script>
+
 
 
   </body>
