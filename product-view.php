@@ -16,6 +16,12 @@
       include 'dbcon.php';
     ?>
 
+    <div class="reveal" id="category-modal" data-reveal>
+      <h1>Are you sure you want to delete this product?</h1>
+      <a href="delete.php?product_id='.$product_id.'"><button class="my-button action-button">Delete</button></a>
+      <a href="#"><button class="my-button modal-cancel" data-close aria-label="Close modal">Cancel</button></a>
+    </div>
+
 
     <div class="product-view-container">
       <div class="row">
@@ -52,16 +58,18 @@
                             <div class="small-12 medium-6 columns">';
 
                   
-                  echo  '<h1>'.$row['name'].'</h1>'.
+                  echo  '<h3>'.$row['name'].'</h3>'.
                         '<p>'.$row['description'].'</p>'.
                         '<h2>$ '.$row['price'].'</h2>';
                     }
                   }
+                  echo '<button class="my-button action-button">Edit images</button>
+                        <button class="my-button action-button">Edit content</button>
+                        <a href="delete.php?product_id='.$product_id.'"><button data-open="category-modal" class="my-button action-button">Delete</button>';
                 ?>
                 
                 
-                <button class="my-button action-button">Edit images</button>
-                <button class="my-button action-button">Edit content</button>
+                
               <!-- </div> -->
             </div>
           </div>

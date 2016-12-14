@@ -48,9 +48,10 @@
 }
 
 .product-view-container h1{
-  font-size: 34px;
-  color: $dark-grey;
+  font-size: 14px;
+  color: $light-grey;
   // line-height: 24px;
+  font-family: $lato;
 }
 
 .product-view-container p{

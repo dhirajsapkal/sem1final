@@ -2,6 +2,10 @@
   color: $light-grey;
 }
 
+* {
+	font-family: $lato;
+}
+
 .link-active{
   color: $orange!important;
 }
@@ -47,4 +51,12 @@
 .button:hover, .button:focus{
 	background-color: $background;
 }
+
+
+.product-display h3{
+	font-size: 30px;
+    line-height: 43px;
+    color: #0a0a0a;
+}
+
 
