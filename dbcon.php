@@ -1,7 +1,7 @@
 <?php
   $servername = "localhost";
   $username = "root";
-  $password = "";
+  $password = "gTqRHDbMXC";
   // mysql_select_db("idd_632");
   $myDB = "ecommerce";
 
