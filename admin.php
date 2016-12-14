@@ -249,11 +249,7 @@
         success: function() {
           $('#category').html("<div id='category-success'></div>");
           $('#category-success').html("<h2>category successfully added!</h2>")
-          .append("<p>That's some AJAX for you</p>")
-          .hide()
-          .fadeIn(1500, function() {
-            $('#category-success').append("<img id='checkmark' src='images/check.png' />");
-          });
+          .append("<p>Please refresh your browser to add more categories</p>");
           // $( "#category-display" ).load( "ajax/test.html" )
         }
       })
@@ -293,11 +289,7 @@
         success: function() {
           $('#product').html("<div id='product-success'></div>");
           $('#product-success').html("<h2>Product successfully added!</h2>")
-          .append("<p>That's some AJAX for you</p>")
-          .hide()
-          .fadeIn(1500, function() {
-            $('#product-success').append("<img id='checkmark' src='images/check.png' />");
-          });
+          .append("<p>Please refresh your browser to add more products</p>");
         }
       })
       // return false;
@@ -333,11 +325,7 @@
         success: function() {
           $('#image').html("<div id='Image-success'></div>");
           $('#Image-success').html("<h2>Image successfully added!</h2>")
-          .append("<p>That's some AJAX for you</p>")
-          .hide()
-          .fadeIn(1500, function() {
-            $('#image-success').append("<img id='checkmark' src='images/check.png' />");
-          });
+          .append("<p>Please refresh your browser to add more Images</p>");
         }
       })
       // return false;

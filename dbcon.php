@@ -1,5 +1,5 @@
 <?php
-  $servername = "localhost";
+  $servername = "162.243.217.250";
   $username = "root";
   $password = "gTqRHDbMXC";
   // mysql_select_db("idd_632");
