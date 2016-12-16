@@ -95,7 +95,7 @@
 
               if ($result->num_rows > 0) {
                 while($row = $result->fetch_assoc()) {
-                  echo '<li><a href="#'.$row["category"].'" data-magellan-target="' . $row["category"] . '">' . $row["category"] . "</a></li>";
+                  echo '<li><a href="#'.$row["category"].'" data-magellan-target="#' . $row["category"] . '">' . $row["category"] . '</a></li>';
                 }
               }
             ?>

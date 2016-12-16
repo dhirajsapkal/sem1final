@@ -33,6 +33,7 @@
       <button class="my-button" data-close aria-label="Close modal">Cancel</button>
     </div>
 
+
     <div class="reveal" id="success-modal" data-reveal>
       <p class="modal-large">Success!!!</p>
       <p>Your changes were sucessfully saved to the database</p>
@@ -79,7 +80,7 @@
     <div class="product-view-container">
       <div class="row">
         <div class="small-12 columns">
-          <div class="card">
+          <div class="card card-padding">
             <div class="row">
               <div class="small-12 medium-6 columns">
                 <div class="product-display">
@@ -110,16 +111,15 @@
                             <div class="small-12 medium-6 columns">';
 
                   
-                  echo  '<h3>'.$row['name'].'</h3>'.
+                  echo  '<p class="card-large">'.$row['name'].'</p>'.
                         '<p>'.$row['description'].'</p>'.
-                        '<h2>$ '.$row['price'].'</h2>';
+                        '<p class="card-price">$ '.$row['price'].'</p>';
                     }
                   }
                   // echo '<button class="my-button action-button">Edit images</button>
                   //       <button class="my-button action-button">Edit content</button>
                   //       <a href="delete.php?product_id='.$product_id.'"><button data-open="delete-modal" class="my-button action-button">Delete</button>';
-                  echo '<button class="my-button">Edit images</button>
-                        <button data-open="product-modal" class="my-button">Edit content</button>
+                  echo '<button data-open="product-modal" class="my-button">Edit content</button>
                         <button data-open="delete-modal" class="my-button action-button">Delete</button>';
                 ?>
                 
