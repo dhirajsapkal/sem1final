@@ -1,7 +1,9 @@
 <?php
-  $servername = "162.243.217.250";
+  // $servername = "162.243.217.250";
+  $servername = "localhost";
   $username = "root";
-  $password = "gTqRHDbMXC";
+  // $password = "gTqRHDbMXC";
+  $password = "";
   // mysql_select_db("idd_632");
   $myDB = "ecommerce";
 

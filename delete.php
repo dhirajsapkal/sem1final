@@ -1,7 +1,7 @@
 <?php
 	include 'dbcon.php';
 	
-	$product_id = $_GET['product_id'];
+	$product_id = $_POST['product_id'];
 
 	$sql = "DELETE FROM product WHERE id=$product_id";
 

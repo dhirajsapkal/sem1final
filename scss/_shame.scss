@@ -45,7 +45,7 @@
     font-size: 12px;
     line-height: 23px;
     padding: 0 40px;
-    margin-top: 20px;
+    // margin-top: 20px;
 }
 
 .button:hover, .button:focus{
@@ -57,6 +57,26 @@
 	font-size: 30px;
     line-height: 43px;
     color: #0a0a0a;
+}
+
+.modal-large{
+    // text-align: center;
+    font-size: 30px;
+}
+
+.success-modal{
+	text-align: center;
+}
+
+.left-nav p{
+	font-size: 12px;
+	color: $orange;
+	margin: 10px;
+	text-align: center;
+}
+
+#delete{
+	display: inline-block;
 }
 
 

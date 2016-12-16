@@ -14,15 +14,16 @@
 
   <div class="reveal" id="category-modal" data-reveal>
 	  <form id="category" action="" method="post">
-      <input type="text" name="category">
+      <input type="text" placeholder="Enter the name of your new category (Required)" required name="category">
       <input type="submit" class="my-button action-button modal-submit" value="Add">
     </form>
     <a href="#"><button class="my-button modal-cancel" data-close aria-label="Close modal">Cancel</button></a>
 	</div>
 
   <div class="reveal" id="success-modal" data-reveal>
-    <h1>Success!!!
-    <a href="#"><button class="my-button modal-cancel" data-close aria-label="Close modal">Done</button></a>
+    <p class="modal-large">Success!!!</p>
+    <p>Your changes were sucessfully saved to the database</p>
+    <button class="my-button action-button" id="modal-done" data-close aria-label="Close modal">Sweet</button>
   </div>
 
   <div class="reveal" id="image-modal" data-reveal>
@@ -39,7 +40,7 @@
           }
         ?>
       </select>
-      <input type="text" name="link">
+      <input type="text" name="link" placeholder="Enter the image URL (Required)" required>
       <input type="submit" class="my-button action-button modal-submit" value="Add">
     </form>
     <a href="#"><button class="my-button modal-cancel" data-close aria-label="Close modal">Cancel</button></a>
@@ -47,9 +48,10 @@
 
   <div class="reveal" id="product-modal" data-reveal>
     <form id="product" action="" method="post">
-      <input type="text" name="name" id="name" placeholder="Product name">
-      <textarea rows="10" id="description" placeholder="About the product" name="description"></textarea>
-      <input type="text" id="price" name="price" placeholder="Price">
+      <input type="text" name="name" id="name" placeholder="Enter the name of the product 
+      (Required)" required>
+      <textarea rows="10" id="description" placeholder="Tell us something about the product" name="description"></textarea>
+      <input type="text" id="price" name="price" placeholder="Price (Required)" required>
       <select name="categoryId">
       <?php 
         $sql = "SELECT id, category FROM categories";
@@ -69,19 +71,22 @@
 
   <div class="row">
     <div class="small-12 medium-2 columns" data-sticky-container>
-    	<div class="card sticky" data-sticky data-anchor="product-list" data-margin-top="4">
+    	<div class="card sticky left-nav" data-sticky data-anchor="product-list" data-margin-top="4">
+        <p>Add new products</p>
         <button class="my-button" data-open="category-modal" style="width: 100%; margin-bottom: 20px">Add Category</button>
         <button class="my-button" data-open="product-modal" style="width: 100%; margin-bottom: 20px">Add Product</button>
         <button class="my-button" data-open="image-modal" style="width: 100%; margin-bottom: 20px">Add Images</button>
         <div class="seperator" style="width: 100%"></div>
+        <p>Sort by price</p>
         <form action="" method="post">
           <select name="price_sort" id="price_sort">
             <option value="0" selected="selected">Low to high</option>
             <option value="1">High to low</option>
           </select>
-          <button class="button my-button action-button" type="submit"><span>Go</span></button>
+          <button class="button my-button action-button" type="submit"><span>Sort</span></button>
         </form>
         <div class="seperator" style="width: 100%"></div>
+        <p>Browse categories</p>
     		<nav class="categories" data-magellan data-options="barOffset:30;" data-active-class="link-active">
 	    		<ul class="vertical menu" id="category-display" data-magellan>
             <?php
@@ -90,7 +95,7 @@
 
               if ($result->num_rows > 0) {
                 while($row = $result->fetch_assoc()) {
-                  echo '<li><a href="#first" data-magellan-target="' . $row["category"] . '">' . $row["category"] . "</a></li>";
+                  echo '<li><a href="#'.$row["category"].'" data-magellan-target="' . $row["category"] . '">' . $row["category"] . "</a></li>";
                 }
               }
             ?>
@@ -119,9 +124,9 @@
               while($row = $result->fetch_assoc()) {
 
                 $categoryId = $row['id'];
-                echo '<div class="card card-center" id="first">
+                echo '<div class="card card-center" id="'.$row["category"].'">
                         <div class="top-strip">
-                          <a href="#"><h2 class="card-title">'.$row["category"].'</h2></a>
+                          <h2 class="card-title">'.$row["category"].'</h2>
                         </div>';
 
 
@@ -217,7 +222,6 @@
 
 
 
-
   $(document).ready(function() {
 
     // $('#price_sort').change(function(event) {
@@ -227,9 +231,15 @@
     //         }
     //     );            
     // });
-    $("#product-modal").on('hide', function () {
+    // 
+    $( "#modal-done" ).click(function() {
+      // setTimeout(function(){
         window.location.reload();
+      // },100); 
+      // alert( "Handler for .click() called." );
     });
+
+
 
     $('#category').submit(function(event) {
 
@@ -247,10 +257,9 @@
         // dataType    : 'json', // what type of data do we expect back from the server
         // encode          : true,
         success: function() {
-          $('#category').html("<div id='category-success'></div>");
-          $('#category-success').html("<h2>category successfully added!</h2>")
-          .append("<p>Please refresh your browser to add more categories</p>");
-          // $( "#category-display" ).load( "ajax/test.html" )
+
+          $('#category-modal').foundation('close');
+          $('#success-modal').foundation('open');
         }
       })
       // return false;
@@ -287,9 +296,9 @@
         // dataType    : 'json', // what type of data do we expect back from the server
         // encode          : true,
         success: function() {
-          $('#product').html("<div id='product-success'></div>");
-          $('#product-success').html("<h2>Product successfully added!</h2>")
-          .append("<p>Please refresh your browser to add more products</p>");
+
+          $('#product-modal').foundation('close');
+          $('#success-modal').foundation('open');
         }
       })
       // return false;
@@ -323,9 +332,9 @@
         // dataType    : 'json', // what type of data do we expect back from the server
         // encode          : true,
         success: function() {
-          $('#image').html("<div id='Image-success'></div>");
-          $('#Image-success').html("<h2>Image successfully added!</h2>")
-          .append("<p>Please refresh your browser to add more Images</p>");
+
+          $('#category-modal').foundation('close');
+          $('#success-modal').foundation('open');
         }
       })
       // return false;

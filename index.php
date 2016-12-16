@@ -47,7 +47,7 @@
                 $categoryId = $row['id'];
                 echo '<div class="card">
                         <div class="top-strip">
-                          <a href="#"><h2 class="card-title">'. $row["category"] .'</h2></a>
+                          <a href="admin.php#'.$row["category"].'"><h2 class="card-title">'. $row["category"] .'</h2></a>
                           <a href="#" class="card-view">View all</a>
                         </div>
                         <div class="product-slider">
