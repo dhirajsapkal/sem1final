@@ -12,6 +12,7 @@
     include 'dbcon.php';
   ?>
 
+
   <div class="reveal" id="category-modal" data-reveal>
 	  <form id="category" action="" method="post">
       <input type="text" placeholder="Enter the name of your new category (Required)" required name="category">
@@ -127,6 +128,17 @@
                 echo '<div class="card card-center" id="'.$row["category"].'">
                         <div class="top-strip">
                           <h2 class="card-title">'.$row["category"].'</h2>
+                          <button data-open="delete-category-modal-'.$row['id'].'" class="my-button float-right">Delete</button>
+                        </div>
+                        <div class="reveal delete-category" id="delete-category-modal-'.$row['id'].'" data-reveal>
+                          <p class="modal-large">Are you sure you want to delete this category?</p>
+                          <p>You wont be able to see the products within this category anymore, unless you add this category again or change the category the products belong to</p>
+                          <form id="delete-category" action="delete-category.php" method="post" style="display:inline-block">';
+                            echo '<input type="hidden" name="category_id" value="'.$row['id'].'">';
+
+                     echo '<button type="submit" class="my-button action-button">Delete</button>
+                          </form>
+                          <button class="my-button" data-close aria-label="Close modal">Cancel</button>
                         </div>';
 
 
@@ -141,6 +153,7 @@
             }
 
         ?>
+
 
 
       </div>
@@ -232,6 +245,45 @@
     //     );            
     // });
     // 
+    // $('.delete-category').submit(function(event) {
+
+    //   // get the form data
+    //   // there are many ways to get this data using jQuery (you can use the class or id also)
+    //   var deleteData = {
+    //       'category_id'              : $('input[name=category_id]').val()
+    //   };
+
+    //   // process the form
+    //   $.ajax({
+    //     type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+    //     url         : 'delete-category.php', // the url where we want to POST
+    //     data        : deleteData, // our data object
+    //     // dataType    : 'json', // what type of data do we expect back from the server
+    //     // encode          : true,
+    //     success: function() {
+
+    //       // $('#delete-modal').foundation('close');
+    //       // $('#success-modal').foundation('open');
+    //        $('#category-modal').foundation('close');
+    //       $('#success-modal').foundation('open');
+    //     }
+    //   })
+    //   // return false;
+    //       // using the done promise callback
+    //       .done(function(data) {
+
+    //           // log data to the console so we can see
+    //           console.log(data); 
+
+    //           // here we will handle errors and validation messages
+    //       });
+
+    //   // stop the form from submitting the normal way and refreshing the page
+    //   event.preventDefault();
+    // });
+
+
+
     $( "#modal-done" ).click(function() {
       // setTimeout(function(){
         window.location.reload();
